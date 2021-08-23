@@ -1,0 +1,6 @@
+mixin video(Video)
+    div 
+        h4
+            a(href ="/videos/" + Video.id) = Video.title
+        ul 
+            li #{Video.views} views

@@ -1,0 +1,13 @@
+extends base.pug
+include mixins/video.pug
+
+block content 
+    h3 Home page
+    nav 
+        li 
+            a(href="/videos/upload") Upload Video 
+    h4 Welcome here you will see the videos
+    each Video in videos 
+        +video(Video)
+    else 
+        li Sorry, Nothing Founded
