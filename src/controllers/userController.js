@@ -84,19 +84,48 @@ export const postEdit = async(req,res) =>{
         username,
         location,
     };
-    return res.redirect("/users/edit");
+    return res.redirect("/users/edit-profile");
 };
 export const getChangePassword = (req,res) =>{
-    return res.render("users/change-password", {pageTitle : "Change Password"});
+    return res.render("users/changepassword", {pageTitle : "Change Password"});
 };
-export const postChangePassword = (req, res) =>{
+export const postChangePassword =async (req, res) =>{
     const{
         session:{
             user:{_id}
         },
-        body:{ol}
+        body:{oldPassword, newPassword, confirmPassword},
+        }=req;
+    const user = await User.findById(_id);
+    const ok = await bcrypt.compare(oldPassword, user.password);
+    if(!ok){
+        return res.status(400).render("users/changepassword",{
+            pageTitle : "Change Password",
+            errorMessage : "The current password is incorrect"
+        });
     }
-}
-export const logout = (req,res) =>res.send("logout");
+    if(newPassword !== confirmPassword){
+        return res.status(400).render("users/chagepassword", {
+            pageTitle : "Change Password",
+            errorMessage : "The password does not match the confirmation"
+        })
+    }
+    user.password = newPassword;
+    await user.save();
+    return res.redirect("/");
+};
+export const logout = (req,res) =>{
+    console.log(req.session);
+    req.session.destroy();
+    return res.redirect("/");
+};
+export const profile = async(req,res) =>{
+    const {id} = req.params;
+    const user = await User.findById(id);
+    if(!user){
+        return res.status(400).render("404", {pageTitle : "User not found."});
+    };
+    const videos = await Video.find({owner : user._id});
+    return res.render("users/profile", {pageTitle : user.name + " profile", user:user, videos});
+};
 export const removeProfile = (req,res) =>res.send("removeProfile");
-export const profile = (req,res) =>res.send("profile");

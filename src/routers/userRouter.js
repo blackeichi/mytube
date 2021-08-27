@@ -3,10 +3,11 @@ import {getChangePassword,postChangePassword,getEdit,postEdit, removeProfile, lo
 import {protectorMiddleware, uploadFiles} from "../middlewares";
 
 const userRouter = express.Router();
-userRouter.get("/logout",protectorMiddleware,logout);
+
 userRouter.get("/deleteProfile", removeProfile);
-userRouter.route("/edit-profile").all(protectorMiddleware).get(getEdit).post(uploadFiles.single("avatar").postEdit);
-userRouter.route("/change-password").all(protectorMiddleware).get(getChangePassword).post(postChangePassword);
+userRouter.get("/logout",protectorMiddleware, logout);
+userRouter.route("/edit-profile").all(protectorMiddleware).get(getEdit).post(uploadFiles.single("avatar"),postEdit);
+userRouter.route("/changepassword").all(protectorMiddleware).get(getChangePassword).post(postChangePassword);
 userRouter.get("/:id", profile);
 
 export default userRouter;
