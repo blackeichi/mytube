@@ -105,14 +105,14 @@ export const postChangePassword =async (req, res) =>{
         });
     }
     if(newPassword !== confirmPassword){
-        return res.status(400).render("users/chagepassword", {
+        return res.status(400).render("users/changepassword", {
             pageTitle : "Change Password",
             errorMessage : "The password does not match the confirmation"
-        })
+        });
     }
     user.password = newPassword;
     await user.save();
-    return res.redirect("/");
+    return res.redirect("/users/logout");
 };
 export const logout = (req,res) =>{
     console.log(req.session);
