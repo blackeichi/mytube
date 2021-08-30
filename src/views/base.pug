@@ -1,10 +1,11 @@
 doctype html 
 html(lang = "ko")
     head 
-        title #{pageTitle} | Youtube
+        title YouTube
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+        link(rel="stylesheet", href="/static/css/style.css")
     body 
-        header 
-            h3=pageTitle
+        include partials/header.pug
             nav
                 ul
                     li 
@@ -27,5 +28,5 @@ html(lang = "ko")
                     a(href="/search") Search
         main
         block content 
-    include footers/footer.pug
+    include partials/footer.pug
     script(src="/static/js/main.js")

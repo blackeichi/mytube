@@ -1,6 +1,12 @@
-@import "./variable";
+//Config
+@import "./config/variable";
+@import "./config/reset";
+
+//Component
+@import "./component/base__top.scss";
+
 
 body{
-    background-color: $red;
+    background-color: #181818;
     color : white;
 }
