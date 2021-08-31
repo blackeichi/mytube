@@ -1,6 +1,7 @@
 /*!**********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/scss/styles.scss ***!
   \**********************************************************************************************************************/
+@charset "UTF-8";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -51,14 +52,81 @@ table {
   border-spacing: 0;
 }
 
-basemenu {
+.basemenu {
   width: 100%;
-  text-align: center;
-  justify-content: center;
+  height: 70px;
+  align-items: center;
+  justify-content: space-between;
   display: flex;
+  background-color: #202020;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.headerphoto {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.basemenu_others {
+  margin-right: 15px;
+  font-size: 13px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.basemenu_others a i {
+  font-size: 17px;
+}
+
+.basemenu_search {
+  display: flex;
+  width: 400px;
+}
+
+.basemenu_search form {
+  max-width: 300px;
+}
+
+.basemenu_home {
+  margin-left: 30px;
+  display: flex;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.basemenu_home a {
+  margin-left: 30px;
+  display: flex;
+}
+
+.basemenu_home a i {
+  color: red;
+}
+
+.basemenu_home a p {
+  color: white;
+}
+
+input[type=text] {
+  font-size: 16px;
+  background-color: #121212;
+  padding: 15px 20px;
+  border:  1px solid rgba(255, 255, 255, 0.2);
+  border-radius:  5px;
+  width: 90%;
 }
 
 body {
   background-color: #181818;
   color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
