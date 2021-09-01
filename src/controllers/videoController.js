@@ -3,15 +3,15 @@ import Video, {formatHashtags} from "../model/Video";
 import User from "../model/User";
 
 export const home = async (req, res) => {
-    const videos = await Video.find({}).sort({createdAt : "desc"});
+    const videos = await Video.find({}).sort({createdAt : "asc"}).populate("owner");
     return res.render("home", {pageTitle : "Homepage", videos});
 };
 export const watch = async(req, res) => {
     const {id} = req.params;
     const video = await Video.findById(id).populate("owner");
     if(video){
-        console.log(video);
-        return res.render("watch", {pagetitle : video.title, video});
+        console.log("find video");
+        return res.render("watch", {pageTitle : "Play "+ video.title, video});
     }
     return res.status(404).render("404", {pageTitle : "Video not found."});
 };

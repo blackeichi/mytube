@@ -1,5 +1,8 @@
 extends base.pug
 include mixins/video
 block content
-    each Video in videos
-        +video(Video)
+    div.video__grid
+        each Video in videos
+            +video(Video)
+        else 
+            span Sorry, Nothing founded

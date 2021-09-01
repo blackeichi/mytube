@@ -4,9 +4,10 @@ div.basemenu
         a(href="/")
             i.fab.fa-youtube
             p Premium
+            sup KR
     div.basemenu_search
-        form(method = "GET", action = "http://localhost:4000/search")
-            input(type="text", placeholder = "검색", name ="keyword")
+        form.searching(method = "GET", action = "http://localhost:4000/search")
+            input.searchform(type="text", placeholder = "검색", name ="keyword")
             button(type="submit", title="Search") 
                 i.fas.fa-search
     div.basemenu_others

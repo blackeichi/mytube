@@ -1,0 +1,21 @@
+.sidebar{
+    background-color: #202020;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sidebar__home{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sidebar__home i{
+    font-size: 20px;
+}
+.sidebar__home p{
+    margin-top: 5px;
+    font-size: 10px;
+}

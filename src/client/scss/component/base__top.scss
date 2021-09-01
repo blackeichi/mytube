@@ -1,12 +1,11 @@
 .basemenu{
-    width : 100%;
+    width : 100vw;
     height: 70px;
     align-items: center;
     justify-content: space-between;
     display: flex;
     background-color: #202020;
-    margin-bottom: 10px;
-    font-size: 15px;
+    font-size: 15px;    
 };
 .headerphoto{
     width: 30px;
@@ -15,7 +14,7 @@
 };
 .basemenu_others{
     margin-right: 15px;
-    font-size: 13px;
+    font-size: 15px;
     width: 300px;
     display: flex;
     align-items: center;
@@ -24,12 +23,9 @@
 .basemenu_others a i{
     font-size: 17px;
 }
-.basemenu_search{
-    display: flex;
-    width: 400px;
-}
 .basemenu_search form{
-    max-width: 300px;
+    max-width: 500px;
+    display: flex;
 }
 .basemenu_home{
     margin-left: 30px;
@@ -46,12 +42,23 @@
 }
 .basemenu_home a p{
     color: white;
+    letter-spacing: -2px;
+    font-weight: 600;
 }
-input[type="text"]{
+.searchform{
     font-size: 16px;
+    color: white;
     background-color: #121212;
-    padding : 15px 20px;
-    border: 1px solid rgba(255,255,255,0.2);
+    padding : 5px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
     border-radius: 5px;
-    width: 90%;
+    width: 70%;
+}
+button{
+    font-size: 16px;
+    color : rgba(255, 255, 255, 0.6);
+    background-color: #313131;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    width: 30%;
+    cursor: pointer;
 }

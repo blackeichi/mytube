@@ -1,0 +1,40 @@
+input{
+    &:not(.searchform){
+        background-color: black;
+        color: rgba(255, 255, 255, 0.8);
+        padding: 5px 20px;
+        border-radius: 7px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+}
+input[type="submit"]{
+    cursor: pointer;
+}
+form{
+    &:not(.searching){
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 15px;
+    }
+}
+.profileimg{
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.editvideo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+.editprofile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
