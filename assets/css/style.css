@@ -60,6 +60,8 @@ table {
   display: flex;
   background-color: #202020;
   font-size: 15px;
+  position: fixed;
+  z-index: 2;
 }
 
 .headerphoto {
@@ -104,7 +106,7 @@ table {
 
 .basemenu_home a p {
   color: white;
-  letter-spacing: -2px;
+  letter-spacing: -3px;
   font-weight: 600;
 }
 
@@ -118,7 +120,7 @@ table {
   width: 70%;
 }
 
-button {
+.searching button {
   font-size: 16px;
   color: rgba(255, 255, 255, 0.6);
   background-color: #313131;
@@ -133,6 +135,9 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
+  margin-top: 70px;
+  height: 100%;
 }
 
 .sidebar__home {
@@ -153,7 +158,7 @@ button {
 }
 
 .pageTitle {
-  height: 70px;
+  height: 50px;
   width: 100%;
   background-color: #202020;
   display: flex;
@@ -164,12 +169,12 @@ button {
 }
 
 .pageTitle p {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-input:not(.searchform) {
+input:not(.searchform) input:not(input[type=range]) {
   background-color: black;
   color: rgba(255, 255, 255, 0.8);
   padding: 5px 20px;
@@ -245,6 +250,115 @@ form:not(.searching) {
   color: rgba(255, 255, 255, 0.3);
 }
 
+.watchpage {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 25px;
+  margin-top: 20px;
+}
+
+.playbox {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-right: 30px;
+  position: static;
+}
+
+video {
+  width: 100%;
+}
+
+#videobox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.playcontrols {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  width: 100%;
+}
+
+.playcontrols__timeline {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  margin: 0 5px;
+}
+
+.showing {
+  opacity: 1;
+}
+
+.playcontrols__timeline__range {
+  width: 100%;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.playcontrols__controlers {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 5px;
+}
+
+.playcontrols__controlers button {
+  background-color: transparent;
+  border: none;
+}
+
+.playcontrols__controlers i {
+  color: white;
+  font-size: 18px;
+}
+
+.videoinfo {
+  margin: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.videoinfo__title h1 {
+  font-size: 21px;
+  margin-bottom: 15px;
+}
+
+.videoinfo__title small {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.videoinfo__subinfo {
+  margin: 15px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.videoinfo__subinfo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.videoinfo__subinfo a {
+  margin-top: 15px;
+  text-align: center;
+  display: flex;
+}
+
+.videoinfo__subinfo p {
+  margin-top: 15px;
+}
+
 body {
   height: 100%;
   background-color: #181818;
@@ -269,6 +383,8 @@ main {
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-top: 70px;
+  margin-left: 70px;
 }
 
 .contents {
@@ -284,6 +400,7 @@ footer {
   text-align: center;
   width: 100%;
   height: 40px;
+  margin-top: 50px;
 }
 
 sup {

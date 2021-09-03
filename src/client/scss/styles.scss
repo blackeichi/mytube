@@ -8,7 +8,8 @@
 @import "./component/pagetitle.scss";
 @import "./component/inputform.scss";
 //screen
-@import "./screen/videoform";
+@import "./screen/videoform.scss";
+@import "./screen/videoplayer.scss";
 
 body{
     height: 100%;
@@ -32,6 +33,8 @@ main{
     align-items: center;
     width: 100%;
     height: 100%;
+    margin-top: 70px;
+    margin-left: 70px;
 }
 .contents{
     display: flex;
@@ -45,6 +48,7 @@ footer{
     text-align: center;
     width: 100%;
     height: 40px;
+    margin-top: 50px;
 }
 sup{
     line-height: 1;

@@ -4,6 +4,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: fixed;
+    margin-top: 70px;
+    height: 100%;
 }
 .sidebar__home{
     margin-top: 40px;
