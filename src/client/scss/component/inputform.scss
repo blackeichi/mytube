@@ -1,12 +1,11 @@
-input{
-    &:not(.searchform)
-    &:not(input[type="range"]){
+input:not([type="range"]){
+        &:not(.searchform){
         background-color: black;
         color: rgba(255, 255, 255, 0.8);
         padding: 5px 20px;
         border-radius: 7px;
         border: 1px solid rgba(255, 255, 255, 0.3);
-    }
+        }
 }
 input[type="submit"]{
     cursor: pointer;

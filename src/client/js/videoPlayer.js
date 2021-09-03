@@ -32,7 +32,7 @@ const handleMuteClick = (e) => {
   } else {
     video.muted = true;
   }
-  muteBtnIcon.classList = video.muted ? "fas fa-volume-up" : "fas fa-volume-mute";
+  muteBtnIcon.classList = video.muted ? "fas fa-volume-mute" : "fas fa-volume-up";
   volumeRange.value = video.muted ? 0 : volumeValue;
 };
 
