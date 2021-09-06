@@ -106,10 +106,12 @@ const handleEnded = () =>{
 const handleLikeBtn = () =>{
   const {id} = videobox.dataset;
   fetch("/api/videos/"+id+"/like", {method : "POST"});
+  window.location.reload();
 }
 const handleHateBtn = () =>{
   const {id} = videobox.dataset;
   fetch("/api/videos/"+id+"/hate", {method : "POST"});
+  window.location.reload();
 }
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);

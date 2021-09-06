@@ -42,6 +42,8 @@ block content
                 br
                 a(href=video.id+"/delete") Delete Video &rarr; 
         div.uservideo
+            span #{video.owner.name} 의 비디오
+            hr
             each Video in videos
                 +video(Video)
 block scripts
