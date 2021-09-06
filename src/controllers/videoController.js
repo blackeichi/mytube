@@ -77,3 +77,35 @@ export const search = async(req, res) => {
     };
     return res.render("search",{pageTitle : "Search page", videos});
 };
+
+export const registerView = async(req,res) =>{
+    const {id} = req.params;
+    const video = await Video.findById(id);
+    if(!video){
+        return res.sendStatus(200);
+    }
+    video.meta.views = video.meta.views +1;
+    await video.save();
+    return res.sendStatus(200);
+}
+
+export const likeVideo = async(req,res) =>{
+    const {id} = req.params;
+    const video = await Video.findById(id);
+    if(!video){
+        return res.sendStatus(200);
+    }
+    video.meta.like = video.meta.like +1;
+    await video.save();
+    return res.sendStatus(200);
+}
+export const hateVideo = async(req,res) =>{
+    const {id} = req.params;
+    const video = await Video.findById(id);
+    if(!video){
+        return res.sendStatus(200);
+    }
+    video.meta.hate = video.meta.hate +1;
+    await video.save();
+    return res.sendStatus(200);
+}

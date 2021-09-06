@@ -245,8 +245,14 @@ form:not(.searching) {
 }
 
 .videodata__meta span {
+  padding-bottom: 2px;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.3);
+}
+
+.videodata__meta {
+  display: flex;
+  flex-direction: column;
 }
 
 .watchpage {
@@ -355,6 +361,30 @@ video {
 
 .videoinfo__subinfo p {
   margin-top: 15px;
+}
+
+.videoinfo__titlesub button {
+  background-color: #181818;
+  color: white;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.videoinfo__titlesub {
+  display: flex;
+  justify-content: space-between;
+}
+
+#preview {
+  width: 500px;
+}
+
+.previewbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 body {

@@ -6,4 +6,5 @@ mixin video(Video)
                 span #{Video.title}
         div.videodata__meta
             span #{Video.owner.name}
+            span #{Video.meta.views} 회
         small=Video.createdAt 

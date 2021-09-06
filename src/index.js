@@ -8,6 +8,7 @@ import session from "express-session";
 import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
+import apiRouter from "./routers/apiRouter";
 import { localsMiddleware } from "./middlewares";
 
 const PORT = "4000";
@@ -30,6 +31,7 @@ app.use("/static", express.static("assets"));
 app.use("/", globalRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
+app.use("/api", apiRouter);
 
 const handleListening = () => console.log("❤ 서버가 포트 4000으로 Listening 하고 있다. http://localhost:" + PORT);
 console.log("hi");

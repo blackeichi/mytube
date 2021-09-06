@@ -11,6 +11,8 @@ const fullScreenBtn = document.getElementById("fullScreen");
 const fullScreenBtnIcon = fullScreenBtn.querySelector("i");
 const videobox = document.getElementById("videobox");
 const playcontrols__timeline = document.getElementById("playcontrols__timeline");
+const likeBtn = document.getElementById("Like");
+const hateBtn = document.getElementById("Hate");
 
 let controlsTimeout = null;
 let controlsMovementTimeout = null;
@@ -97,7 +99,18 @@ const handleMouseMove = () => {
 const handleMouseLeave = () => {
   controlsTimeout = setTimeout(hideControls, 3000);
 };
-
+const handleEnded = () =>{
+  const {id} = videobox.dataset;
+  fetch("/api/videos/"+id+"/view", {method : "POST"})
+}
+const handleLikeBtn = () =>{
+  const {id} = videobox.dataset;
+  fetch("/api/videos/"+id+"/like", {method : "POST"});
+}
+const handleHateBtn = () =>{
+  const {id} = videobox.dataset;
+  fetch("/api/videos/"+id+"/hate", {method : "POST"});
+}
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeChange);
@@ -107,3 +120,6 @@ timeline.addEventListener("input", handleTimelineChange);
 fullScreenBtn.addEventListener("click", handleFullscreen);
 video.addEventListener("mousemove", handleMouseMove);
 video.addEventListener("mouseleave", handleMouseLeave);
+video.addEventListener("ended", handleEnded);
+likeBtn.addEventListener("click", handleLikeBtn);
+hateBtn.addEventListener("click", handleHateBtn);

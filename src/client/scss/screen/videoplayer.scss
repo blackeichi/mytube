@@ -88,3 +88,14 @@ video{
 .videoinfo__subinfo p{
     margin-top: 15px;
 }
+.videoinfo__titlesub button{
+    background-color: #181818;
+    color: white;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}
+.videoinfo__titlesub{
+    display: flex;
+    justify-content: space-between;
+}
