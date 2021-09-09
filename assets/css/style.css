@@ -236,7 +236,7 @@ form:not(.searching) {
 .videoThumbnail {
   background-color: white;
   width: 280px;
-  height: 140px;
+  height: 150px;
 }
 
 .video__form small {
@@ -441,4 +441,8 @@ sup {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+}
+
+button {
+  cursor: pointer;
 }
