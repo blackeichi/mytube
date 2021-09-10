@@ -40,7 +40,11 @@ main{
 .contents{
     display: flex;
     align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
     height: 100%;
+    width: 90%;
 }
 footer{
     display: flex;

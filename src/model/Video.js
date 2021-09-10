@@ -12,6 +12,7 @@ const videoSchema = new mongoose.Schema({
         like : {type : Number, default : 0},
         hate : {type : Number, default : 0},
     },
+    comments : [{type : mongoose.Schema.Types.ObjectId, required : true, ref:"Comment"}], //한 비디오에 댓글이 여러개 달릴 수 있으므로 배열처리
     owner : {type : mongoose.Schema.Types.ObjectId, required : true, ref:"User"},
 });
 videoSchema.pre("save", async function(){

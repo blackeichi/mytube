@@ -26,7 +26,7 @@ block content
                 div.videoinfo__title
                     h1=video.title
                     div.videoinfo__titlesub
-                        small=video.createdAt
+                        small=new Date(video.createdAt).toLocaleDateString("ko-kr", {weekday:'long', year : 'numeric', month : 'numeric', day : 'numeric'})
                         div
                             button#Like
                                 i.fas.fa-heart  Like #{video.meta.like}
@@ -45,6 +45,13 @@ block content
             span #{video.owner.name} 의 비디오
             hr
             each Video in videos
-                +video(Video)
+                +videolist(Video)
+    if loggedIn 
+        div.video__comments
+            form.video__comments-form#commentForm
+                textarea(cols="30", rows="10", placeholder = "Write a nice comment...")
+                button Add Comment 
 block scripts
     script(src="/static/js/videoPlayer.js")
+    if loggedIn
+        script(src="/static/js/commentSection.js")

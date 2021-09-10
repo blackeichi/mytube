@@ -111,3 +111,11 @@ export const hateVideo = async(req,res) =>{
     await video.save();
     return res.sendStatus(200);
 }
+
+export const createComment = (req, res) =>{
+    console.log(req.body.text);
+    console.log(req.session.user);
+    //fatch로 JS에서 object를 보낼때 쿠키도 포함되서 오기때문에, user session또한 가져올 수 있다.
+    //params = video의 아이디
+    return res.end();
+}

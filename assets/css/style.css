@@ -137,6 +137,7 @@ table {
   position: fixed;
   margin-top: 70px;
   height: 100%;
+  z-index: 3;
 }
 
 .sidebar__home {
@@ -264,6 +265,11 @@ form:not(.searching) {
   justify-content: center;
   padding: 25px;
   margin-top: 20px;
+}
+
+.uservideo {
+  width: 200px;
+  height: 120px;
 }
 
 .playbox {
@@ -418,7 +424,11 @@ main {
 .contents {
   display: flex;
   align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
   height: 100%;
+  width: 90%;
 }
 
 footer {

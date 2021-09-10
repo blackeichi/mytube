@@ -4,6 +4,6 @@ include mixins/video.pug
 block content
     div.video__grid
         each Video in videos 
-            +video(Video)
+            +videolist(Video)
         else 
             li Sorry, Nothing Founded
