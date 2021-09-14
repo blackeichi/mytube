@@ -1,6 +1,7 @@
 import {reset} from "nodemon";
 import Video, {formatHashtags} from "../model/Video";
 import User from "../model/User";
+import Comment from "../model/Comment";
 
 export const home = async (req, res) => {
     const videos = await Video.find({}).sort({createdAt : "asc"}).populate("owner");
@@ -8,7 +9,7 @@ export const home = async (req, res) => {
 };
 export const watch = async(req, res) => {
     const {id} = req.params;
-    const video = await Video.findById(id).populate("owner");
+    const video = await Video.findById(id).populate("owner").populate("comments");
     const videos = await Video.find({owner : video.owner}).populate("owner");
     if(video){
         return res.render("watch", {pageTitle : "Play "+ video.title, video,videos});
@@ -112,10 +113,25 @@ export const hateVideo = async(req,res) =>{
     return res.sendStatus(200);
 }
 
-export const createComment = (req, res) =>{
-    console.log(req.body.text);
-    console.log(req.session.user);
+export const createComment = async(req, res) =>{
+    const{
+        session : {user},
+        body : {text},
+        params : {id},
+    } = req;
     //fatch로 JS에서 object를 보낼때 쿠키도 포함되서 오기때문에, user session또한 가져올 수 있다.
     //params = video의 아이디
-    return res.end();
+    const video = await Video.findById(id);
+    if(!video){
+        return res.sendStatus(404);
+    }
+    const comment = await Comment.create({
+        text,
+        owner : user._id,
+        video : id,
+    });
+    video.comments.push(comment._id);
+    //watch 부분에 comments를 populate 하기 위해, comment의 id를 video에 넣기
+    video.save();
+    return res.sendStatus(201);
 }
