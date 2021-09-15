@@ -2,6 +2,7 @@ import {reset} from "nodemon";
 import Video, {formatHashtags} from "../model/Video";
 import User from "../model/User";
 import Comment from "../model/Comment";
+import Opinion from "../model/Opinion";
 
 export const home = async (req, res) => {
     const videos = await Video.find({}).sort({createdAt : "asc"}).populate("owner");
@@ -9,7 +10,7 @@ export const home = async (req, res) => {
 };
 export const watch = async(req, res) => {
     const {id} = req.params;
-    const video = await Video.findById(id).populate("owner").populate("comments");
+    const video = await Video.findById(id).populate("owner").populate("comments").populate("opinions");
     const videos = await Video.find({owner : video.owner}).populate("owner");
     if(video){
         return res.render("watch", {pageTitle : "Play "+ video.title, video,videos});
@@ -22,7 +23,7 @@ export const editVideo = async(req, res) =>{
     if(!video){
         return res.render("404", {pageTitle : "Video not found."});
     }
-     return res.render("edit", {pageTitle : "Editing " + video.title, video})
+    return res.render("edit", {pageTitle : "Editing " + video.title, video})
 };
 export const postEditVideo = async(req, res) =>{
     const id = req.params.id;
@@ -93,14 +94,30 @@ export const registerView = async(req,res) =>{
 }
 
 export const likeVideo = async(req,res) =>{
-    const {id} = req.params;
+    const{
+        session : {user},
+        params : {id},
+    } = req;
     const video = await Video.findById(id);
     if(!video){
+        return res.sendStatus(404);
+    }
+    const opinionId = video.opinions[video.opinions.length-1]
+    const opinion = await Opinion.create({
+        owner : user._id,
+        video : id,
+    });
+    console.log(opinion.owner);
+    console.log(opinionId);
+    if(JSON.stringify(opinionId) == JSON.stringify(opinion.owner)){        
+        return res.sendStatus(404);
+        console.log("Stop");
+    }else{
+        video.opinions.push(opinion.owner);
+        video.meta.like = video.meta.like +1;
+        await video.save();
         return res.sendStatus(200);
     }
-    video.meta.like = video.meta.like +1;
-    await video.save();
-    return res.sendStatus(200);
 }
 export const hateVideo = async(req,res) =>{
     const {id} = req.params;
