@@ -103,13 +103,27 @@ const handleEnded = () =>{
   const {id} = videobox.dataset;
   fetch("/api/videos/"+id+"/view", {method : "POST"})
 }
-const handleLikeBtn = () =>{
+const handleLikeBtn = async() =>{
+  const span = document.getElementById("likenumber");
+  const like = span.innerText;
   const {id} = videobox.dataset;
-  fetch("/api/videos/"+id+"/like", {method : "POST"});
+  const {status} = await fetch("/api/videos/"+id+"/like", {method : "POST"});
+  if(status === 200){
+    span.innerText =  parseInt(like) + 1;
+  }else if(status === 401){
+    
+  }
 }
 const handleHateBtn = () =>{
+  const span = document.getElementById("hatenumber");
+  const hate = span.innerText;
   const {id} = videobox.dataset;
-  fetch("/api/videos/"+id+"/hate", {method : "POST"});
+  const {status} = fetch("/api/videos/"+id+"/hate", {method : "POST"});
+  if(status === 200){
+    span.innerText =  parseInt(like) + 1;
+  }else if(status === 401){
+    
+  }
 }
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);

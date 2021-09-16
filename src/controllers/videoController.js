@@ -107,11 +107,10 @@ export const likeVideo = async(req,res) =>{
         owner : user._id,
         video : id,
     });
-    console.log(opinion.owner);
     console.log(opinionId);
+    console.log(opinion.owner);
     if(JSON.stringify(opinionId) == JSON.stringify(opinion.owner)){        
-        return res.sendStatus(404);
-        console.log("Stop");
+        return res.sendStatus(401);
     }else{
         video.opinions.push(opinion.owner);
         video.meta.like = video.meta.like +1;
@@ -120,14 +119,29 @@ export const likeVideo = async(req,res) =>{
     }
 }
 export const hateVideo = async(req,res) =>{
-    const {id} = req.params;
+    const{
+        session : {user},
+        params : {id},
+    } = req;
     const video = await Video.findById(id);
     if(!video){
+        return res.sendStatus(404);
+    }
+    const opinionId = video.opinions[video.opinions.length-1]
+    const opinion = await Opinion.create({
+        owner : user._id,
+        video : id,
+    });
+    console.log(opinionId);
+    console.log(opinion.owner);
+    if(JSON.stringify(opinionId) == JSON.stringify(opinion.owner)){        
+        return res.sendStatus(401);
+    }else{
+        video.opinions.push(opinion.owner);
+        video.meta.hate = video.meta.hate +1;
+        await video.save();
         return res.sendStatus(200);
     }
-    video.meta.hate = video.meta.hate +1;
-    await video.save();
-    return res.sendStatus(200);
 }
 
 export const createComment = async(req, res) =>{

@@ -29,9 +29,11 @@ block content
                         small=new Date(video.createdAt).toLocaleDateString("ko-kr", {weekday:'long', year : 'numeric', month : 'numeric', day : 'numeric'})
                         div
                             button#Like
-                                i.fas.fa-heart  Like #{video.meta.like}
+                                i.fas.fa-heart  Like
+                                span#likenumber #{video.meta.like}
                             button#Hate
-                                i.fas.fa-heart-broken  Hate #{video.meta.hate}
+                                i.fas.fa-heart-broken  Hate
+                                span#hatenumber #{video.meta.hate}
                 div.videoinfo__subinfo
                     a(href="/users/"+video.owner._id)
                         img(src="/" + video.owner.avatarUrl)

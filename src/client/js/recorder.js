@@ -90,6 +90,7 @@ const handleStart = () =>{
         video.loop = true;
         video.play();
     };
+    console.log(videoFile.path);
     recorder.start();
 }
 const init = async () =>{
