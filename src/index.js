@@ -4,6 +4,7 @@ import Video from "./model/Video";
 import User from "./model/User";
 import Comment from "./model/Comment";
 import Opinion from "./model/Opinion";
+import Makethumb from "./model/Makethumb";
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";

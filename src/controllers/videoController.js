@@ -3,6 +3,7 @@ import Video, {formatHashtags} from "../model/Video";
 import User from "../model/User";
 import Comment from "../model/Comment";
 import Opinion from "../model/Opinion";
+import Makethumb from "../model/Makethumb";
 
 export const home = async (req, res) => {
     const videos = await Video.find({}).sort({createdAt : "asc"}).populate("owner");
@@ -166,3 +167,10 @@ export const createComment = async(req, res) =>{
     video.save();
     return res.sendStatus(201);
 }
+export const makeThumbnail = async(req, res) =>{
+    const {makethumb} = req.files;
+    const createThumb = await Makethumb.create({
+        fileUrl : makethumb[0].path,
+    })
+    return res.sendStatus(200);
+};

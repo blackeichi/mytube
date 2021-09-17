@@ -5,7 +5,8 @@ module.exports = {
         videoPlayer : "./src/client/js/videoPlayer.js",
         main: "./src/client/js/main.js",
         recorder : "./src/client/js/recorder.js",
-        commentSection : "./src/client/js/commentSection.js"
+        commentSection : "./src/client/js/commentSection.js",
+        makethumb : "./src/client/js/makethumb.js"
     },
     mode : "development",
     plugins : [new MiniCssExtractPlugin({

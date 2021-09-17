@@ -89,8 +89,8 @@ const handleStart = () =>{
         video.src = videoFile;
         video.loop = true;
         video.play();
+        console.log(videoFile);
     };
-    console.log(videoFile.path);
     recorder.start();
 }
 const init = async () =>{
@@ -103,7 +103,8 @@ const init = async () =>{
     });
     video.srcObject = stream;
     video.play();
-    console.log("video");
+    console.log(stream);
+
 };
 
 init();
