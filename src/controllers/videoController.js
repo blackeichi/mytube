@@ -167,10 +167,14 @@ export const createComment = async(req, res) =>{
     video.save();
     return res.sendStatus(201);
 }
-export const makeThumbnail = async(req, res) =>{
-    const {makethumb} = req.files;
+export const makeThumbnail = (req, res) =>{
+    return res.render("CreateThumb", {pageTitle : "Create Video Thumb"});
+};
+export const postmakeThumbnail = async(req, res) =>{
+    const {makethumb} = req.file;
     const createThumb = await Makethumb.create({
         fileUrl : makethumb[0].path,
     })
-    return res.sendStatus(200);
+    console.log(createThumb);
+    return res.sendStatus(201);
 };

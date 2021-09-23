@@ -1,0 +1,6 @@
+extends base.pug
+block content
+    form#thumbform(method = "POST", enctype ="multipart/form-data")
+        label(for="makethumb") Download Thumbnail
+        input(type="file", accept="video/*", id="makethumb", name = "makethumb")
+        input(type="submit", value="확인")
