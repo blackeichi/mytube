@@ -171,10 +171,14 @@ export const makeThumbnail = (req, res) =>{
     return res.render("CreateThumb", {pageTitle : "Create Video Thumb"});
 };
 export const postmakeThumbnail = async(req, res) =>{
-    const {makethumb} = req.file;
-    const createThumb = await Makethumb.create({
-        fileUrl : makethumb[0].path,
-    })
-    console.log(createThumb);
-    return res.sendStatus(201);
+    console.log(req.file.path);
+    try{
+        const createThumb = await Makethumb.create({
+            fileUrl : req.file.path,
+        })
+        return res.sendStatus(201);
+    }catch(error){
+        console.log(error);
+        return res.render("CreateThumb", {pageTitle : "Create Video Thumb"});
+    }
 };
