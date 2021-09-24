@@ -1,6 +1,11 @@
 extends base.pug
 block content
-    form#thumbform(method = "POST", enctype ="multipart/form-data")
+    form#thumbform
         label(for="makethumb") Download Thumbnail
-        input(type="file", accept="video/*", id="makethumb", name = "makethumb")
-        input(type="submit", value="확인")
+        textarea(cols="30", rows="10", placeholder = "Write a nice comment...")
+        button Add Comment        
+        //-input(type="file", accept="video/*", id="makethumb", name = "makethumb")
+        //-input#button(type="submit", value="확인")
+
+block scripts
+    script(src="/static/js/makethumb.js")

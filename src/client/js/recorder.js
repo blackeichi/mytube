@@ -84,6 +84,7 @@ const handleStart = () =>{
     startBtn.addEventListener("click", handleStop);
     recorder = new MediaRecorder(stream, {mimeType : "video/webm"});
     recorder.ondataavailable = (event) =>{
+        console.log(event.data);
         videoFile = URL.createObjectURL(event.data);
         video.srcObject = null;
         video.src = videoFile;
@@ -103,7 +104,6 @@ const init = async () =>{
     });
     video.srcObject = stream;
     video.play();
-    console.log(stream);
 
 };
 
