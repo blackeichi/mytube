@@ -9,11 +9,13 @@ export const protectorMiddleware = (req, res, next)=>{
     if(req.session.loggedIn){
         return next();
     }else{
+        req.flash("error", "Login First!");
         return res.redirect("/login");
     }
 }
 export const publicOnlyMiddleware = (req, res, next)=>{
-    if(!req.session.loggedIn){
+    if(req.session.loggedIn){
+        req.flash("error", "Not Autuorized");
         return res.redirect("/");
     }else{
         return next();
