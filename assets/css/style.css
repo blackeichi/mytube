@@ -53,7 +53,8 @@ table {
 }
 
 .basemenu {
-  width: 100vw;
+  width: 94%;
+  margin-left: 6%;
   height: 70px;
   align-items: center;
   justify-content: space-between;
@@ -96,7 +97,7 @@ table {
 }
 
 .basemenu_home a {
-  margin-left: 30px;
+  margin-left: 5px;
   display: flex;
 }
 
@@ -130,12 +131,11 @@ table {
 
 .sidebar {
   background-color: #202020;
-  width: 70px;
+  width: 6%;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: fixed;
-  margin-top: 70px;
   height: 100%;
   z-index: 3;
 }
@@ -148,6 +148,10 @@ table {
   justify-content: center;
 }
 
+.fas.fa-bars.basemenu_sidebar {
+  font-size: 25px;
+}
+
 .sidebar__home i {
   font-size: 20px;
 }
@@ -155,6 +159,18 @@ table {
 .sidebar__home p {
   margin-top: 5px;
   font-size: 10px;
+}
+
+.sidebar_extend {
+  width: 25%;
+  height: 100%;
+  background-color: #202020;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  height: 100%;
+  z-index: 3;
 }
 
 .pageTitle {

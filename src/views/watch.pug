@@ -55,10 +55,12 @@ block content
                 button Add Comment
     div.video__comments
         ul 
-            each comment in video.comments
-                li.video__comment 
+            each comment in video.comments.reverse()
+                li.video__comment#videocomment
                     i.fas.fa-comment 
                     span  #{comment.text}
+                    if String(comment.owner._id) === loggedInUser._id
+                        span.deletecomment(data-id = comment._id)  삭제
 block scripts
     script(src="/static/js/videoPlayer.js")
     if loggedIn

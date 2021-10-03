@@ -1,4 +1,8 @@
-div.sidebar
+div.sidebar_extend(style = "display:none")#sidebar_extend
+    i.fas.fa-bars.basemenu_sidebar#sidebarCloseBtn
+    span Hi
+div.sidebar#sidebar
+    i.fas.fa-bars.basemenu_sidebar#sidebarBtn
     div.sidebar__home
         i.fas.fa-home 
         p 홈
@@ -15,3 +19,5 @@ div.sidebar
     div.sidebar__home
         i.fas.fa-home 
         p Original
+block scripts 
+    script(src="/static/js/sidebar.js") 

@@ -4,6 +4,7 @@ import User from "../model/User";
 import Comment from "../model/Comment";
 import Opinion from "../model/Opinion";
 import Makethumb from "../model/Makethumb";
+import { async } from "regenerator-runtime";
 
 export const home = async (req, res) => {
     const videos = await Video.find({}).sort({createdAt : "asc"}).populate("owner");
@@ -12,7 +13,7 @@ export const home = async (req, res) => {
 export const watch = async(req, res) => {
     const {id} = req.params;
     const video = await Video.findById(id).populate("owner").populate("comments").populate("opinions");
-    const videos = await Video.find({owner : video.owner}).populate("owner");
+    const videos = await Video.find({owner : video.owner}).populate("owner").populate("comments");
     if(video){
         return res.render("watch", {pageTitle : "Play "+ video.title, video,videos});
     }
@@ -165,20 +166,25 @@ export const createComment = async(req, res) =>{
     video.comments.push(comment._id);
     //watch 부분에 comments를 populate 하기 위해, comment의 id를 video에 넣기
     video.save();
-    return res.sendStatus(201);
+    return res.status(201).json({newCommentId : comment._id});
 }
 export const makeThumbnail = (req, res) =>{
     return res.render("CreateThumb", {pageTitle : "Create Video Thumb"});
 };
-/*
-export const postmakeThumbnail = async(req, res) =>{
-    console.log(req.file);
-    try{
-            const File = URL.createObjectURL(req.file);
-            console.log(File);
-            return res.status(200).render("CreateThumb", {pageTitle : "Upload Complete!"});
-    }catch(error){
-        console.log(error);
-        return res.render("CreateThumb", {pageTitle : "Error "});
+
+export const deleteComment = async(req, res) => {
+    const {id} = req.params;
+    console.log(id);
+    const comment = await Comment.findById(id);
+    console.log(comment);
+
+    if(!comment){
+        return res.sendStatus(404);
     }
-};*/
+
+    if(String(req.session.user._id) !== String(comment.owner)){
+        return res.sendStatus(404);
+    }
+    await Comment.findByIdAndDelete(id);
+    return res.sendStatus(201);
+}

@@ -1,19 +1,39 @@
+import { async } from "regenerator-runtime";
+
 const videobox = document.getElementById("videobox");
 const form = document.getElementById("commentForm");
+const deletecomment = document.querySelectorAll(".deletecomment");
 
-const addComment = (text) => {
+const addComment = (text ,newCommentId) => {
     //새로고침하지 않아도 바로 댓글내용이 보이도록 fake댓글 만들기
     const videoComments = document.querySelector(".video__comments ul");
     const newComment = document.createElement("li");
+    newComment.dataset.id = newCommentId;
     newComment.className = "video__comment";
     const icon = document.createElement("i");
     icon.className = "fas fa-comment";
     const span = document.createElement("span");
     span.innerText = ` ${text}`;
+    const span2 = document.createElement("span");
+    span2.innerText = " 삭제";
+    span2.className = "deletecomment";
+    span2.style.cursor = "pointer";
     newComment.appendChild(icon);
     newComment.appendChild(span);
+    newComment.appendChild(span2);
     videoComments.prepend(newComment);
     //appendChild = 순서대로, prepend = 역순으로
+
+    span2.addEventListener("click", async()=>{
+        const response = await fetch(`/api/videos/${newCommentId}/delete`,{
+            method : "DELETE",
+            
+        });
+        if(response.status === 201){
+            newComment.remove();
+        }
+    })
+
 }
 const handleSubmit = async(event) =>{
     event.preventDefault();
@@ -24,7 +44,7 @@ const handleSubmit = async(event) =>{
     if(text === ""){
         return;
     }//작성된 text가 없으면 return
-    const {status} = await fetch(`/api/videos/${videoId}/comment`,{
+    const response = await fetch(`/api/videos/${videoId}/comment`,{
         //await로 status값을 응답받음.//JS 내용을 backend로 내보내는 역활
         method:"POST",
         headers:{
@@ -36,12 +56,32 @@ const handleSubmit = async(event) =>{
     });
     textarea.value = "";
     //텍스트 입력칸 초기화
-    if(status === 201) {
-        addComment(text);
+    if(response.status === 201) {
+        const {newCommentId} = await response.json();
+        addComment(text,newCommentId);
         //201status라면 댓글작성
     }
-
 };
+
+const handleDelete = async(event)=>{
+    console.log("hi");
+    const li = event.target.parentElement;
+    const CommentId = event.target.dataset.id;
+    console.log(CommentId);
+
+    const response = await fetch(`/api/videos/${CommentId}/delete`,{
+        method : "DELETE",
+    });
+    if(response.status === 201){
+        li.remove();
+    }
+    
+}
+
 if(form){
     form.addEventListener("submit", handleSubmit);
+};
+
+for(let i = 0; i < deletecomment.length; i++){
+    deletecomment[i].addEventListener("click", handleDelete);
 }
