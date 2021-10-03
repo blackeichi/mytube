@@ -6,12 +6,27 @@ input:not([type="range"]){
         border-radius: 7px;
         border: 1px solid rgba(255, 255, 255, 0.3);
         }
+}input:not([type="range"]){
+    &:not(.video__comments-form){
+    background-color: black;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 5px 20px;
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    }
 }
 input[type="submit"]{
     cursor: pointer;
 }
 form{
     &:not(.searching){
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 15px;
+    }
+}form{
+    &:not(.video__comments-form){
         display: flex;
         flex-direction: column;
         text-align: center;

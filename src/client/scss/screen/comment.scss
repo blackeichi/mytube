@@ -1,0 +1,30 @@
+.commentSector{
+    width: 100%;
+}
+.video__comments-form{
+    max-width: 100%;
+    display: flex;
+    justify-items: right;
+    input:focus {outline: none;}
+    height: 40px;
+    margin-bottom: 20px;
+}
+.video__comments-form input{
+    font-size: 16px;
+    color: white;
+    background-color: #121212;
+    padding : 5px 20px;
+    border : none;
+    width: 100%;
+    border-bottom: solid 1px white;
+}
+.video__comments-form button{
+    background-color: royalblue;
+    border: none;
+    width: 15%;
+    color: white;
+    font-weight: 500;
+}
+.video__comment{
+    margin-bottom: 20px;
+}

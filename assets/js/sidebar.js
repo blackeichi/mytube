@@ -15,7 +15,7 @@
   \**********************************/
 /***/ (() => {
 
-eval("var sidebar = document.getElementById(\"sidebar\");\nvar sidebar2 = document.getElementById(\"sidebar_extend\");\nvar sidebarBtn = document.getElementById(\"sidebarBtn\");\nvar sidebarCloseBtn = document.getElementById(\"sidebarCloseBtn\");\nvar basemenu = document.getElementById(\"basemenu\");\n\nvar handleClick = function handleClick() {\n  sidebar2.style.width = \"25%\";\n  sidebar2.style.display = \"flex\";\n  sidebar.style.display = \"none\"; //sidebarBtn.style.display = \"none\";\n};\n\nvar handleClose = function handleClose() {\n  sidebar2.style.display = \"none\";\n  sidebar.style.display = \"flex\";\n};\n\nsidebarBtn.addEventListener(\"click\", handleClick);\nsidebarCloseBtn.addEventListener(\"click\", handleClose);\n\n//# sourceURL=webpack://mytube/./src/client/js/sidebar.js?");
+eval("var sidebar = document.getElementById(\"sidebar\");\nvar sidebar2 = document.getElementById(\"sidebar_extend\");\nvar sidebarBtn = document.getElementById(\"sidebarBtn\");\nvar sidebarCloseBtn = document.getElementById(\"sidebarCloseBtn\");\nvar basemenu = document.getElementById(\"basemenu\");\n\nvar handleClick = function handleClick() {\n  sidebar2.style.display = \"flex\";\n  sidebar.style.display = \"none\"; //sidebarBtn.style.display = \"none\";\n};\n\nvar handleClose = function handleClose() {\n  sidebar2.style.display = \"none\";\n  sidebar.style.display = \"flex\";\n};\n\nsidebarBtn.addEventListener(\"click\", handleClick);\nsidebarCloseBtn.addEventListener(\"click\", handleClose);\n\n//# sourceURL=webpack://mytube/./src/client/js/sidebar.js?");
 
 /***/ })
 

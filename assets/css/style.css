@@ -53,8 +53,7 @@ table {
 }
 
 .basemenu {
-  width: 94%;
-  margin-left: 6%;
+  width: 100%;
   height: 70px;
   align-items: center;
   justify-content: space-between;
@@ -90,7 +89,7 @@ table {
 }
 
 .basemenu_home {
-  margin-left: 30px;
+  margin-left: 90px;
   display: flex;
   font-size: 25px;
   font-weight: 700;
@@ -131,13 +130,21 @@ table {
 
 .sidebar {
   background-color: #202020;
-  width: 6%;
+  width: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: fixed;
   height: 100%;
   z-index: 3;
+  margin-top: 22px;
+}
+
+.sidebar div a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .sidebar__home {
@@ -162,15 +169,40 @@ table {
 }
 
 .sidebar_extend {
-  width: 25%;
+  width: 240px;
   height: 100%;
   background-color: #202020;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: fixed;
-  height: 100%;
   z-index: 3;
+}
+
+.sidebar_extend span {
+  margin-top: 50px;
+}
+
+.sidebar_extend_logo {
+  display: flex;
+  margin-top: 22px;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.sidebar_extend_logo a {
+  margin-left: 56px;
+  display: flex;
+}
+
+.sidebar_extend_logo a i {
+  color: red;
+}
+
+.sidebar_extend_logo a p {
+  color: white;
+  letter-spacing: -3px;
+  font-weight: 600;
 }
 
 .pageTitle {
@@ -198,11 +230,26 @@ input:not([type=range]):not(.searchform) {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+input:not([type=range]):not(.video__comments-form) {
+  background-color: black;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 5px 20px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 input[type=submit] {
   cursor: pointer;
 }
 
 form:not(.searching) {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 15px;
+}
+
+form:not(.video__comments-form) {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -377,6 +424,7 @@ video {
 
 .videoinfo__subinfo a {
   margin-top: 15px;
+  width: 20%;
   text-align: center;
   display: flex;
 }
@@ -407,6 +455,43 @@ video {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.commentSector {
+  width: 100%;
+}
+
+.video__comments-form {
+  max-width: 100%;
+  display: flex;
+  justify-items: right;
+  height: 40px;
+  margin-bottom: 20px;
+}
+.video__comments-form input:focus {
+  outline: none;
+}
+
+.video__comments-form input {
+  font-size: 16px;
+  color: white;
+  background-color: #121212;
+  padding: 5px 20px;
+  border: none;
+  width: 100%;
+  border-bottom: solid 1px white;
+}
+
+.video__comments-form button {
+  background-color: royalblue;
+  border: none;
+  width: 15%;
+  color: white;
+  font-weight: 500;
+}
+
+.video__comment {
+  margin-bottom: 20px;
 }
 
 body {

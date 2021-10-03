@@ -1,12 +1,19 @@
 .sidebar{
     background-color: #202020;
-    width: 6%;
+    width: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: fixed;
     height: 100%;
     z-index: 3;
+    margin-top: 22px;
+}
+.sidebar div a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .sidebar__home{
     margin-top: 40px;
@@ -26,13 +33,34 @@
     font-size: 10px;
 }
 .sidebar_extend{
-    width: 25%;
+    width: 240px;
     height: 100%;
     background-color: #202020;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: fixed;
-    height: 100%;
     z-index: 3;
+}
+.sidebar_extend span{
+    margin-top: 50px;
+}
+.sidebar_extend_logo{
+    display: flex;
+    margin-top: 22px;
+    font-size: 25px;
+    font-weight: 700;
+}
+.sidebar_extend_logo a{
+    margin-left: 56px;
+    display: flex;
+}
+
+.sidebar_extend_logo a i{
+    color: red;
+}
+.sidebar_extend_logo a p{
+    color: white;
+    letter-spacing: -3px;
+    font-weight: 600;
 }

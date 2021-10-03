@@ -6,7 +6,6 @@ const basemenu = document.getElementById("basemenu");
 
 
 const handleClick = () =>{
-    sidebar2.style.width = "25%";
     sidebar2.style.display = "flex";
     sidebar.style.display = "none";
     //sidebarBtn.style.display = "none";

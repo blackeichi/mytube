@@ -38,8 +38,8 @@ const addComment = (text ,newCommentId) => {
 const handleSubmit = async(event) =>{
     event.preventDefault();
     //이벤트 작동시 브라우저가 행동을 멈춤. 그렇게하지 않으면 폼을 제출하고 순식간에 초기화됌
-    const textarea = form.querySelector("textarea");
-    const text = textarea.value;
+    const input = form.querySelector("input");
+    const text = input.value;
     const videoId = videobox.dataset.id;
     if(text === ""){
         return;
@@ -54,7 +54,7 @@ const handleSubmit = async(event) =>{
         body : JSON.stringify({text}),
         //req.body 를 보냄. text를 string화 시키고, index.js에 app.use(express.json())를 추가하여 JS object로 변환;
     });
-    textarea.value = "";
+    input.value = "";
     //텍스트 입력칸 초기화
     if(response.status === 201) {
         const {newCommentId} = await response.json();

@@ -42,25 +42,27 @@ block content
             if String(video.owner._id) === loggedInUser._id
                 a(href=video.id+"/edit") Edit Video &rarr;
                 br
-                a(href=video.id+"/delete") Delete Video &rarr; 
+                a(href=video.id+"/delete") Delete Video &rarr;
+                    div.commentSector
+            if loggedIn 
+                div.video__add-comments
+                    form.video__comments-form#commentForm
+                        input(placeholder = "공개 댓글 추가...")
+                        button 댓글
+            div.video__comments
+                ul 
+                    each comment in video.comments.reverse()
+                        li.video__comment#videocomment
+                            i.fas.fa-comment
+                            span  #{comment.text}
+                            if String(comment.owner._id) === loggedInUser._id
+                                span.deletecomment(data-id = comment._id)  삭제
         div.uservideo
             span #{video.owner.name} 의 비디오
             hr
             each Video in videos
                 +videolist(Video)
-    if loggedIn 
-        div.video__add-comments
-            form.video__comments-form#commentForm
-                textarea(cols="30", rows="10", placeholder = "Write a nice comment...")
-                button Add Comment
-    div.video__comments
-        ul 
-            each comment in video.comments.reverse()
-                li.video__comment#videocomment
-                    i.fas.fa-comment 
-                    span  #{comment.text}
-                    if String(comment.owner._id) === loggedInUser._id
-                        span.deletecomment(data-id = comment._id)  삭제
+
 block scripts
     script(src="/static/js/videoPlayer.js")
     if loggedIn

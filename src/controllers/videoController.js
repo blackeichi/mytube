@@ -12,6 +12,7 @@ export const home = async (req, res) => {
 };
 export const watch = async(req, res) => {
     const {id} = req.params;
+    const {user} = req.session;
     const video = await Video.findById(id).populate("owner").populate("comments").populate("opinions");
     const videos = await Video.find({owner : video.owner}).populate("owner").populate("comments");
     if(video){

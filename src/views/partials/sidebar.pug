@@ -1,23 +1,33 @@
 div.sidebar_extend(style = "display:none")#sidebar_extend
-    i.fas.fa-bars.basemenu_sidebar#sidebarCloseBtn
+    div.sidebar_extend_logo
+        i.fas.fa-bars.basemenu_sidebar#sidebarCloseBtn
+        a(href="/")
+            i.fab.fa-youtube
+            p Youtube
+            sup KR
     span Hi
+    span 이곳은 사이드바 입니다. 
+    span 곧 준비될 예정입니다.
 div.sidebar#sidebar
     i.fas.fa-bars.basemenu_sidebar#sidebarBtn
     div.sidebar__home
-        i.fas.fa-home 
-        p 홈
-    div.sidebar__home
-        i.fas.fa-home 
-        p My Videos
-    div.sidebar__home
-        i.fas.fa-home 
-        p 보관함
+        a(href="/") 
+            i.fas.fa-home
+            p 홈
+    if loggedIn
+        div.sidebar__home
+            a(href="/users/"+loggedInUser._id)
+                i.fas.fa-photo-video
+                p My Videos
+        div.sidebar__home
+            i.fas.fa-archive
+            p 보관함
     div.sidebar__home
         a(href="/videos/CreateVideoThumb")
-            i.fas.fa-home
+            i.fas.fa-file-download
             p Make Thumb
     div.sidebar__home
-        i.fas.fa-home 
+        i.fas.fa-heart
         p Original
 block scripts 
     script(src="/static/js/sidebar.js") 
