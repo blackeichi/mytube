@@ -9,7 +9,7 @@ module.exports = {
         makethumb : "./src/client/js/makethumb.js",
         sidebar : "./src/client/js/sidebar.js"
     },
-    mode : "development",
+    //mode : "development", 이제 서버로 만들거기에 삭제
     plugins : [new MiniCssExtractPlugin({
         filename : "css/style.css",
     })],

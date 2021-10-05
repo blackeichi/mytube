@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec babel-node src/index.js",
-    "assets": "webpack --config webpack.config.js"
+    "assets": "webpack --config webpack.config.js --mode=development -w",
+    "build:assets" : "webpack --mode=production",
+    "server": "babel src -d build",
+    "build" : "npm run build:assets && npm run server",
+    "start" : "node build/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +22,8 @@
   },
   "homepage": "https://github.com/Hjeongwoo/mytube#readme",
   "devDependencies": {
-    "@babel/core": "^7.15.0",
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
     "@babel/node": "^7.14.9",
     "@babel/preset-env": "^7.15.0",
     "babel-loader": "^8.2.2",
