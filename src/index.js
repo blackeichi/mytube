@@ -1,5 +1,5 @@
-import "./db";
 import "regenerator-runtime";
+import "./db";
 import Video from "./model/Video";
 import User from "./model/User";
 import Comment from "./model/Comment";

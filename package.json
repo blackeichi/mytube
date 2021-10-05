@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec babel-node src/index.js",
-    "assets": "webpack --config webpack.config.js --mode=development -w",
+    "assets": "webpack --config webpack.config.js --mode=development",
     "build:assets": "webpack --mode=production",
-    "server": "babel src -d build",
-    "build": "npm run build:assets && npm run server",
+    "build:server": "babel src -d build",
+    "build": "npm run build:assets && npm run build:server",
     "start": "node build/index.js"
   },
   "repository": {
@@ -21,7 +21,8 @@
     "url": "https://github.com/Hjeongwoo/mytube/issues"
   },
   "homepage": "https://github.com/Hjeongwoo/mytube#readme",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
     "@babel/node": "^7.14.9",
@@ -29,14 +30,12 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.2.0",
-    "nodemon": "^2.0.12",
+    "nodemon": "^2.0.13",
     "sass": "^1.38.2",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
     "webpack": "^5.51.1",
-    "webpack-cli": "^4.8.0"
-  },
-  "dependencies": {
+    "webpack-cli": "^4.8.0",
     "@ffmpeg/core": "^0.8.5",
     "@ffmpeg/ffmpeg": "^0.9.7",
     "bcrypt": "^5.0.1",
