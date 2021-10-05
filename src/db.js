@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb://127.0.0.1:27017/mytube",{
+mongoose.connect("mongodb+srv://blackeichi:CNuvhQJGUlo8RIK2@cluster0.oe43k.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
     useNewUrlParser : true,
     useUnifiedTopology : true,
 });
