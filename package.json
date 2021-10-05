@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "nodemon --exec babel-node src/index.js",
     "assets": "webpack --config webpack.config.js --mode=development",
+    "build": "npm run build:assets && npm run build:server",
     "build:assets": "webpack --mode=production",
     "build:server": "babel src -d build",
-    "build": "npm run build:assets && npm run build:server",
     "start": "node build/index.js"
   },
   "repository": {
