@@ -15,7 +15,7 @@ import videoRouter from "./routers/videoRouter";
 import apiRouter from "./routers/apiRouter";
 import { localsMiddleware } from "./middlewares";
 
-const PORT = "4000";
+const PORT = process.env.PORT || 4000;
 const app = express();
 const logger = morgan("dev");
 app.use(logger);
