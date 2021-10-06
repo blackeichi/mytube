@@ -44,6 +44,6 @@ app.use("/videos", videoRouter);
 app.use("/users", userRouter);
 app.use("/api", apiRouter);
 
-const handleListening = () => console.log("❤ 서버가 포트 4000으로 Listening 하고 있다. http://localhost:" + PORT);
+const handleListening = () => console.log("❤ 서버가 포트"+PORT+"으로 Listening 하고 있다. http://localhost:" + PORT);
 console.log("hi");
 app.listen(PORT, handleListening);

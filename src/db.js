@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-mongoose.connect(process.env.DB_URL,{
+mongoose.connect("mongodb+srv://blackeichi:CNuvhQJGUlo8RIK2@cluster0.oe43k.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
     useNewUrlParser : true,
     useUnifiedTopology : true,
 });
