@@ -1,5 +1,7 @@
 import "regenerator-runtime";
 import "./db";
+import "dotenv/config";
+import MongoStore from "connect-mongo";
 import Video from "./model/Video";
 import User from "./model/User";
 import Comment from "./model/Comment";

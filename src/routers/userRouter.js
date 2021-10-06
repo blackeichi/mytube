@@ -1,6 +1,6 @@
 import express from "express";
 import {getChangePassword,postChangePassword,getEdit,postEdit, removeProfile, logout, profile} from "../controllers/userController";
-import {protectorMiddleware, uploadFiles} from "../middlewares";
+import {protectorMiddleware, uploadFiles,thumbnailDowunload} from "../middlewares";
 
 const userRouter = express.Router();
 
