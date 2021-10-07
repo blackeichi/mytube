@@ -33,21 +33,19 @@ app.use(
         saveUninitialized : true,
     })
 );
+app.use(localsMiddleware);
+app.use("/uploads", express.static("uploads"));
+app.use("/static", express.static("assets"),express.static("node_modules/@ffmpeg/core/dist"));
+/*app.use((req,res,next)=>{
+    res.header("Cross-Origin-Embedder-Policy", "require-corp");
+    res.header("Cross-Origin-Opener-Policy", "same-origin");
+    next();
+});*/
 /*app.use((req, res, next) => { 
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept" );
     next();
 });*/
-app.use(localsMiddleware);
-app.use("/uploads", express.static("uploads"));
-app.use("/static", express.static("assets"),express.static("node_modules/@ffmpeg/core/dist"));
-app.use((req,res,next)=>{
-    res.header("Cross-Origin-Embedder-Policy", "require-corp");
-    res.header("Cross-Origin-Opener-Policy", "same-origin");
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept" );
-    next();
-});
 app.use("/", globalRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
