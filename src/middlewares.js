@@ -8,9 +8,14 @@ const s3 = new aws.S3({
         secretAccessKey: process.env.AWS_SECRET,
     }
 })
-const multerUploader = multerS3({
+const s3ImageUploader = multerS3({
     s3 : s3,
-    bucket : "myrubee",
+    bucket : "myrubee/images",
+    acl: 'public-read',
+})
+const s3VideoUploader = multerS3({
+    s3 : s3,
+    bucket : "myrubee/videos",
     acl: 'public-read',
 })
 
@@ -37,8 +42,8 @@ export const publicOnlyMiddleware = (req, res, next)=>{
     }
 }
 export const uploadFiles = multer({dest:"uploads/thumb/",
-storage:multerUploader});
+storage:s3ImageUploader});
 export const videoUpload = multer({dest : "uploads/videos/", limits:{fileSize:10000000,},
-storage:multerUploader,});
+storage:s3VideoUploader,});
 export const thumbnailDowunload = multer({dest : "uploads/videos/", limits:{fileSize:10000000,},
-storage:multerUploader,});
+storage:s3ImageUploader,});

@@ -28,7 +28,7 @@ const handledownloadthumb = async() =>{
     event.preventDefault();
     button.removeEventListener("click",handledownloadthumb);
     button.innerText = "Creating Thumbnail...";
-    button.disable = true;
+    button.disabled = true;
 
     const ffmpeg = createFFmpeg({log : true, corePath:"/static/ffmpeg-core.js"});
     await ffmpeg.load();
