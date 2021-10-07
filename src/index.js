@@ -1,6 +1,6 @@
+import "dotenv/config";
 import "regenerator-runtime";
 import "./db";
-import "dotenv/config";
 import MongoStore from "connect-mongo";
 import Video from "./model/Video";
 import User from "./model/User";
@@ -20,27 +20,27 @@ import { localsMiddleware } from "./middlewares";
 const PORT = process.env.PORT || 4000;
 const app = express();
 const logger = morgan("dev");
+app.set("view engine", "pug");
+app.set("views", process.cwd() + "/src/views");
 app.use(logger);
 app.use(flash());
 app.use(express.urlencoded({extended : true}));
 app.use(express.json());
-app.set("view engine", "pug");
-app.set("views", process.cwd() + "/src/views");
 app.use(
     session({
-        secret : "Hello",
+        secret : process.env.COOKIE_SECRET,
         resave : true,
         saveUninitialized : true,
     })
 );
+app.use((req, res, next) => { 
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept" );
+    next();
+});
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("assets"),express.static("node_modules/@ffmpeg/core/dist"));
-app.use((req,res,next)=>{
-    res.header("Cross-Origin-Embedder-Policy", "require-corp");
-    res.header("Cross-Origin-Opener-Policy", "same-origin");
-    next();
-});
 app.use("/", globalRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);

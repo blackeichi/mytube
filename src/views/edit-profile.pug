@@ -1,7 +1,7 @@
 extends base
 block content 
     div.editprofile
-        img.profileimg(src="/"+ loggedInUser.avatarUrl)
+        img.profileimg(src=loggedInUser.avatarUrl)
         form(method = "POST", enctype="multipart/form-data")
             input(type="file", id="avatar", name="avatar", accept="image/*")
             input(name="username", placeholder = "Username",type = "text", value=loggedInUser.username)
@@ -9,4 +9,4 @@ block content
             input(name="name", placeholder = "Name", type = "text", value=loggedInUser.name)
             input(name="location", placeholder = "Location", type = "text", value=loggedInUser.location)
             input(type = "submit", value="Update Profile")
-            a(href="changepassword") Change Password &rarr 
+            a(href="changepassword") Change Password &rarr;
