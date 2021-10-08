@@ -294,6 +294,11 @@ form:not(.searching):not(.video__comments-form) {
   height: 150px;
 }
 
+.videoThumbnail img {
+  width: 100%;
+  height: 100%;
+}
+
 .video__form small {
   font-size: 9px;
   color: rgba(255, 255, 255, 0.3);
@@ -435,6 +440,10 @@ video {
 .videoinfo__titlesub {
   display: flex;
   justify-content: space-between;
+}
+
+#video {
+  width: 500px;
 }
 
 #preview {

@@ -1,8 +1,9 @@
 extends base.pug
-include mixins/video
+include mixins/video.pug
+
 block content
     div.video__grid
-        each Video in videos
-            +video(Video)
+        each Video in videos 
+            +videolist(Video)
         else 
-            span Sorry, Nothing founded
+            li Sorry, Nothing Founded

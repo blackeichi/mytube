@@ -1,7 +1,10 @@
 mixin videolist(Video)
     div.video__form
         a(href ="/videos/" + Video.id)
-            div.videoThumbnail(src = Video.thumbUrl crossorigin)
+            div.videoThumbnail
+                img(src=Video.thumbUrl crossorigin)
+            //-(src = Video.thumbUrl crossorigin) 
+            //-(style = `background-image:url(${Video.thumbUrl});background-size:cover; background-position:center;`)
             div.videodata
                 span #{Video.title}
         div.videodata__meta

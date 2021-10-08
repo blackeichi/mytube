@@ -18,7 +18,8 @@ div.basemenu
                     i.fas.fa-user-edit
                 a(href="/videos/upload", title="Upload Video")
                     i.fas.fa-upload
-                img(src=loggedInUser.avatarUrl crossorigin).headerphoto                                                       
+                if loggedInUser.avatarUrl
+                    img(src=loggedInUser.avatarUrl crossorigin).headerphoto                                                       
         else 
                 a(href="/join") Join 
                 a(href="/login") Login
