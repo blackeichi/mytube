@@ -27,4 +27,10 @@
 }
 .video__comment{
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 100px;
+}
+.deletecomment{
+    cursor: pointer;
 }

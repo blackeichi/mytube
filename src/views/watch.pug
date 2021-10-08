@@ -53,8 +53,9 @@ block content
                 ul 
                     each comment in video.comments.reverse()
                         li.video__comment#videocomment
-                            i.fas.fa-comment
-                            span  #{comment.text}
+                            div
+                                i.fas.fa-comment
+                                span  #{comment.text}
                             if String(comment.owner._id) === loggedInUser._id
                                 span.deletecomment(data-id = comment._id)  삭제
         div.uservideo

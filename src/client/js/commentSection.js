@@ -10,6 +10,7 @@ const addComment = (text ,newCommentId) => {
     const newComment = document.createElement("li");
     newComment.dataset.id = newCommentId;
     newComment.className = "video__comment";
+    const div = document.createElement("div");
     const icon = document.createElement("i");
     icon.className = "fas fa-comment";
     const span = document.createElement("span");
@@ -18,8 +19,9 @@ const addComment = (text ,newCommentId) => {
     span2.innerText = " 삭제";
     span2.className = "deletecomment";
     span2.style.cursor = "pointer";
-    newComment.appendChild(icon);
-    newComment.appendChild(span);
+    div.appendChild(icon);
+    div.appendChild(span);
+    newComment.appendChild(div);
     newComment.appendChild(span2);
     videoComments.prepend(newComment);
     //appendChild = 순서대로, prepend = 역순으로
